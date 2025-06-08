@@ -1,12 +1,108 @@
-<html>
-  <head>
-    <title>
-      Not Ready
-    </title>
-  </head>
-  <body>
-    <h1>
-      No data available yet. Thank you
-    </h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 20px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .email-box {
+      background: white;
+      border-radius: 30px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .email-box input {
+      border: none;
+      outline: none;
+      padding: 10px;
+      flex: 1;
+      border-radius: 30px;
+      font-size: 1rem;
+    }
+
+    .email-box button {
+      background: #2a5298;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .email-box button:hover {
+      background: #1e3c72;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loader"></div>
+    <h1>Coming Soon</h1>
+    <p>Our website is under construction. We're working hard to launch soon.</p>
+    <div class="email-box">
+      <input type="email" placeholder="Enter your email..." />
+      <button>Notify Me</button>
+    </div>
+  </div>
+</body>
 </html>
