@@ -1,104 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      height: 100vh;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      color: white;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 600px;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 30px;
-    }
-
-    .loader {
-      border: 6px solid rgba(255, 255, 255, 0.2);
-      border-top: 6px solid white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 20px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .email-box {
-      background: white;
-      border-radius: 30px;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .email-box input {
-      border: none;
-      outline: none;
-      padding: 10px;
-      flex: 1;
-      border-radius: 30px;
-      font-size: 1rem;
-    }
-
-    .email-box button {
-      background: #2a5298;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-left: 10px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .email-box button:hover {
-      background: #1e3c72;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio - 3D Artist & Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="loader"></div>
-    <h1>Coming Soon</h1>
-    <p>Website is under construction.</p>
-  </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Creative</span>
+                    <span class="title-line">3D Artist</span>
+                    <span class="title-line">& Designer</span>
+                </h1>
+                <p class="hero-description">
+                    Bringing imagination to life through stunning 3D visualizations, 
+                    graphic design, and motion graphics that captivate and inspire.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Creative Work</h2>
+                <p class="section-subtitle">Explore my diverse portfolio across different creative disciplines</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="3d">3D Work</button>
+                <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+                <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- 3D Work Items -->
+                <div class="portfolio-item" data-category="3d">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="3D Architectural Visualization">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Architectural Visualization</h3>
+                                <p>Modern building design with realistic lighting</p>
+                                <span class="category-tag">3D Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="3d">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Product Rendering">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Product Rendering</h3>
+                                <p>High-quality product visualization for marketing</p>
+                                <span class="category-tag">3D Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="3d">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Character Design">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Character Design</h3>
+                                <p>Stylized 3D character for animation</p>
+                                <span class="category-tag">3D Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic Design Items -->
+                <div class="portfolio-item" data-category="graphic">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Brand Identity">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Brand Identity</h3>
+                                <p>Complete branding package for tech startup</p>
+                                <span class="category-tag">Graphic Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="graphic">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Poster Design">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Event Poster</h3>
+                                <p>Creative poster design for music festival</p>
+                                <span class="category-tag">Graphic Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="graphic">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Web Design">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Web Interface</h3>
+                                <p>Modern UI/UX design for mobile app</p>
+                                <span class="category-tag">Graphic Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motion Graphics Items -->
+                <div class="portfolio-item" data-category="motion">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Logo Animation">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Logo Animation</h3>
+                                <p>Dynamic brand reveal animation</p>
+                                <span class="category-tag">Motion Graphics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="motion">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Explainer Video">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Explainer Video</h3>
+                                <p>Animated explainer for SaaS product</p>
+                                <span class="category-tag">Motion Graphics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="motion">
+                    <div class="portfolio-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Title Sequence">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Title Sequence</h3>
+                                <p>Cinematic opening titles for documentary</p>
+                                <span class="category-tag">Motion Graphics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">My professional journey in creative design</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3>Senior 3D Artist</h3>
+                        <h4>Creative Studio Inc.</h4>
+                        <p>Leading 3D visualization projects for architectural and product design clients. Specializing in photorealistic rendering and animation.</p>
+                        <ul class="timeline-skills">
+                            <li>3D Modeling & Rendering</li>
+                            <li>Team Leadership</li>
+                            <li>Client Relations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3>Motion Graphics Designer</h3>
+                        <h4>Digital Agency Pro</h4>
+                        <p>Created engaging motion graphics and animations for various digital marketing campaigns and brand presentations.</p>
+                        <ul class="timeline-skills">
+                            <li>After Effects</li>
+                            <li>Motion Design</li>
+                            <li>Brand Animation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2019">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 2021</div>
+                        <h3>Graphic Designer</h3>
+                        <h4>StartUp Ventures</h4>
+                        <p>Developed visual identities and marketing materials for emerging tech companies. Focused on modern, clean design aesthetics.</p>
+                        <ul class="timeline-skills">
+                            <li>Brand Identity</li>
+                            <li>Print Design</li>
+                            <li>Digital Marketing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2018">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2019</div>
+                        <h3>Junior Designer</h3>
+                        <h4>Design Collective</h4>
+                        <p>Started my professional journey working on diverse design projects, from web graphics to promotional materials.</p>
+                        <ul class="timeline-skills">
+                            <li>Adobe Creative Suite</li>
+                            <li>Web Design</li>
+                            <li>Print Production</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-subtitle">Ready to bring your creative vision to life?</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>hello@portfolio.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>New York, NY</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Creative Portfolio. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Behance</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
