@@ -71,32 +71,36 @@ window.addEventListener("scroll", animateSkills)
 window.addEventListener("load", animateSkills)
 
 // Timeline Animation
-const timelineItems = document.querySelectorAll(".timeline-item")
-const timelineProgressLine = document.querySelector(".timeline-progress-line")
-
 const animateTimeline = () => {
-  const timelineSection = document.querySelector(".timeline-section")
-  const rect = timelineSection.getBoundingClientRect()
+  const timelineSections = document.querySelectorAll(".timeline-section")
 
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    // Calculate progress based on scroll position
-    const progress = Math.min(
-      100,
-      Math.max(0, ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100),
-    )
+  timelineSections.forEach((section) => {
+    const rect = section.getBoundingClientRect()
+    const timelineProgressLine = section.querySelector(".timeline-progress-line")
+    const timelineItems = section.querySelectorAll(".timeline-item")
 
-    timelineProgressLine.style.height = `${progress}%`
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      // Calculate progress based on scroll position
+      const progress = Math.min(
+        100,
+        Math.max(0, ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100),
+      )
 
-    // Animate timeline items
-    timelineItems.forEach((item, index) => {
-      const itemRect = item.getBoundingClientRect()
-      if (itemRect.top < window.innerHeight - 100) {
-        setTimeout(() => {
-          item.classList.add("animate")
-        }, index * 300)
+      if (timelineProgressLine) {
+        timelineProgressLine.style.height = `${progress}%`
       }
-    })
-  }
+
+      // Animate timeline items
+      timelineItems.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect()
+        if (itemRect.top < window.innerHeight - 100) {
+          setTimeout(() => {
+            item.classList.add("animate")
+          }, index * 300)
+        }
+      })
+    }
+  })
 }
 
 window.addEventListener("scroll", animateTimeline)
