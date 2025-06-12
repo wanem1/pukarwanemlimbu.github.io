@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Portfolio - 3D Artist & Designer</title>
+    <title>Pukar Wanem Limbu - Multimedia Generalist</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>Portfolio</h2>
+                <h2>Pukar Wanem Limbu</h2>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#timeline" class="nav-link">Timeline</a>
                 </li>
                 <li class="nav-item">
                     <a href="#portfolio" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#models" class="nav-link">3D Models</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -38,29 +45,130 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
+        <div class="hero-container">
+            <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="title-line">Creative</span>
-                    <span class="title-line">3D Artist</span>
-                    <span class="title-line">& Designer</span>
+                    <span class="gradient-text">Pukar Wanem Limbu</span>
                 </h1>
+                <h2 class="hero-subtitle">Multimedia Generalist</h2>
                 <p class="hero-description">
-                    Bringing imagination to life through stunning 3D visualizations, 
-                    graphic design, and motion graphics that captivate and inspire.
+                    Passionate and driven, I am to grow as a versatile Game Developer and Technical Artist with a focus on texturing and artistry, working toward becoming a Technical Artist.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
             </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Game Development</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-cube"></i>
+                    <span>3D Modeling</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Digital Art</span>
+                </div>
+            </div>
         </div>
-        <div class="hero-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate multimedia generalist with expertise in game development, 3D modeling, and digital art. 
+                        Currently pursuing my MBA in Project Management while working as a Teaching Assistant at Islington College.
+                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Software Proficiency</h3>
+                            <div class="skills">
+                                <span class="skill-tag">Autodesk Maya</span>
+                                <span class="skill-tag">Adobe Photoshop</span>
+                                <span class="skill-tag">Unreal Engine</span>
+                                <span class="skill-tag">DaVinci Resolve</span>
+                                <span class="skill-tag">Blender</span>
+                                <span class="skill-tag">Adobe After Effects</span>
+                                <span class="skill-tag">3D Coat</span>
+                                <span class="skill-tag">Substance Painter</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Technical Skills</h3>
+                            <div class="skills">
+                                <span class="skill-tag">Video Editing</span>
+                                <span class="skill-tag">3D Modeling</span>
+                                <span class="skill-tag">Visual Effects</span>
+                                <span class="skill-tag">Motion Graphics</span>
+                                <span class="skill-tag">Game Development</span>
+                                <span class="skill-tag">3D Animation</span>
+                                <span class="skill-tag">UI/UX Design</span>
+                                <span class="skill-tag">Web Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-track">
+                    <div class="timeline-progress"></div>
+                </div>
+                <div class="timeline-items">
+                    <div class="timeline-item" data-year="2014">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Secondary School</h3>
+                            <p>Delhi Public School, B.P.K.I.H.S, Dharan, Sunsari</p>
+                            <span class="timeline-date">2014 - 2018</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2018">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>High School</h3>
+                            <p>Delhi Public School, B.P.K.I.H.S, Dharan, Sunsari</p>
+                            <span class="timeline-date">2018 - 2021</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2021">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>BSc (Hons) Multimedia</h3>
+                            <p>Islington College, London Metropolitan University</p>
+                            <span class="timeline-date">2021 - 2024</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2023">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Teaching Assistant</h3>
+                            <p>Islington College - 3D Modeling and Texturing</p>
+                            <span class="timeline-date">2023 - Present</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2024">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>MBA Project Management</h3>
+                            <p>Islington College, London Metropolitan University</p>
+                            <span class="timeline-date">2024 - Present</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -68,200 +176,153 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">My Creative Work</h2>
-                <p class="section-subtitle">Explore my diverse portfolio across different creative disciplines</p>
-            </div>
-
-            <!-- Category Filters -->
-            <div class="filter-tabs">
-                <button class="filter-btn active" data-filter="all">All Work</button>
-                <button class="filter-btn" data-filter="3d">3D Work</button>
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="character">Character Arts</button>
+                <button class="filter-btn" data-filter="environment">Environment Arts</button>
+                <button class="filter-btn" data-filter="2d">2D Arts</button>
+                <button class="filter-btn" data-filter="video">Video Editing</button>
+                <button class="filter-btn" data-filter="book">Book Design</button>
                 <button class="filter-btn" data-filter="graphic">Graphic Design</button>
-                <button class="filter-btn" data-filter="motion">Motion Graphics</button>
             </div>
-
-            <!-- Portfolio Grid -->
             <div class="portfolio-grid">
-                <!-- 3D Work Items -->
-                <div class="portfolio-item" data-category="3d">
+                <!-- Character Arts -->
+                <div class="portfolio-item" data-category="character">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="3D Architectural Visualization">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Character Art 1">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Architectural Visualization</h3>
-                                <p>Modern building design with realistic lighting</p>
-                                <span class="category-tag">3D Work</span>
-                            </div>
+                            <h3>Fantasy Character</h3>
+                            <p>3D Character modeling and texturing</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item" data-category="3d">
+                <div class="portfolio-item" data-category="character">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Product Rendering">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Character Art 2">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Product Rendering</h3>
-                                <p>High-quality product visualization for marketing</p>
-                                <span class="category-tag">3D Work</span>
-                            </div>
+                            <h3>Sci-Fi Character</h3>
+                            <p>Game-ready character design</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item" data-category="3d">
+                <!-- Environment Arts -->
+                <div class="portfolio-item" data-category="environment">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Character Design">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Environment Art 1">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Character Design</h3>
-                                <p>Stylized 3D character for animation</p>
-                                <span class="category-tag">3D Work</span>
-                            </div>
+                            <h3>Forest Environment</h3>
+                            <p>3D environment for game level</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Graphic Design Items -->
-                <div class="portfolio-item" data-category="graphic">
+                <div class="portfolio-item" data-category="environment">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Brand Identity">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Environment Art 2">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Brand Identity</h3>
-                                <p>Complete branding package for tech startup</p>
-                                <span class="category-tag">Graphic Design</span>
-                            </div>
+                            <h3>Urban Scene</h3>
+                            <p>Detailed city environment</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item" data-category="graphic">
+                <!-- 2D Arts -->
+                <div class="portfolio-item" data-category="2d">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Poster Design">
+                        <img src="/placeholder.svg?height=300&width=400" alt="2D Art 1">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Event Poster</h3>
-                                <p>Creative poster design for music festival</p>
-                                <span class="category-tag">Graphic Design</span>
-                            </div>
+                            <h3>Digital Illustration</h3>
+                            <p>Concept art and illustration</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item" data-category="graphic">
+                <div class="portfolio-item" data-category="2d">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Web Design">
+                        <img src="/placeholder.svg?height=300&width=400" alt="2D Art 2">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Web Interface</h3>
-                                <p>Modern UI/UX design for mobile app</p>
-                                <span class="category-tag">Graphic Design</span>
-                            </div>
+                            <h3>Character Concept</h3>
+                            <p>2D character design</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Motion Graphics Items -->
-                <div class="portfolio-item" data-category="motion">
+                <!-- Video Editing -->
+                <div class="portfolio-item" data-category="video">
                     <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Logo Animation">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Video Project 1">
                         <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Logo Animation</h3>
-                                <p>Dynamic brand reveal animation</p>
-                                <span class="category-tag">Motion Graphics</span>
-                            </div>
+                            <h3>Animation Reel</h3>
+                            <p>3D animation showcase</p>
+                            <button class="view-btn">View Details</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item" data-category="motion">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Explainer Video">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Explainer Video</h3>
-                                <p>Animated explainer for SaaS product</p>
-                                <span class="category-tag">Motion Graphics</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="motion">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Title Sequence">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Title Sequence</h3>
-                                <p>Cinematic opening titles for documentary</p>
-                                <span class="category-tag">Motion Graphics</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Add more portfolio items as needed -->
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <!-- 3D Models Section -->
+    <section id="models" class="models">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">My professional journey in creative design</p>
-            </div>
-
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item" data-year="2023">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025 - Present</div>
-                        <h3>Tutor</h3>
-                        <h4>Islington College</h4>
-                        <p>Conducting Tutorial and Workshop classes for Modeling and Texturing Module </p>
-                        <ul class="timeline-skills">
-                            <li>3D Modeling & Rendering</li>
-                            <li>Team Leadership</li>
-                            <li>Client Relations</li>
-                        </ul>
+            <h2 class="section-title">Free 3D Models</h2>
+            <p class="section-subtitle">Download high-quality 3D models for your projects</p>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-preview">
+                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 1">
+                    </div>
+                    <div class="model-info">
+                        <h3>Fantasy Sword</h3>
+                        <p>Game-ready low poly sword</p>
+                        <div class="model-details">
+                            <span>Polygons: 1,200</span>
+                            <span>Format: .fbx, .obj</span>
+                        </div>
+                        <button class="download-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
                     </div>
                 </div>
-                 <div class="timeline-item" data-year="2021">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024-2025</div>
-                        <h3>Graduate Teaching Assistant</h3>
-                        <h4>Islington College</h4>
-                        <p>Taught 3D Modeling and Texturing,</p>
-                        <ul class="timeline-skills">
-                            <li>After Effects</li>
-                            <li>Autodesk Maya</li>
-                            <li>Figma</li>
-                            <li>Substance Painter</li>
-                        </ul>
+                <div class="model-card">
+                    <div class="model-preview">
+                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 2">
+                    </div>
+                    <div class="model-info">
+                        <h3>Medieval House</h3>
+                        <p>Detailed building model</p>
+                        <div class="model-details">
+                            <span>Polygons: 3,500</span>
+                            <span>Format: .fbx, .blend</span>
+                        </div>
+                        <button class="download-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
                     </div>
                 </div>
-                <div class="timeline-item" data-year="2021">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023-2024</div>
-                        <h3>Teaching Assistant</h3>
-                        <h4>Islington College</h4>
-                        <p>Taught 3D Modeling and Texturing, Created UI/UX design for event managemment system</p>
-                        <ul class="timeline-skills">
-                            <li>After Effects</li>
-                            <li>Autodesk Maya</li>
-                            <li>Figma</li>
-                            <li>Substance Painter</li>
-                        </ul>
+                <div class="model-card">
+                    <div class="model-preview">
+                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 3">
+                    </div>
+                    <div class="model-info">
+                        <h3>Sci-Fi Weapon</h3>
+                        <p>Futuristic blaster design</p>
+                        <div class="model-details">
+                            <span>Polygons: 2,800</span>
+                            <span>Format: .fbx, .obj</span>
+                        </div>
+                        <button class="download-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -269,42 +330,50 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Let's Work Together</h2>
-                <p class="section-subtitle">Ready to bring your creative vision to life?</p>
-            </div>
-
+            <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Imadole, Lalitpur</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+9779807390300</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
                             <h3>Email</h3>
                             <p>pukar.wanem.limbu@gmail.com</p>
                         </div>
                     </div>
-
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Lalitpur, Nepal</p>
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h3>Website</h3>
+                            <p>https://pukar.wanem.artstation.com/</p>
                         </div>
                     </div>
                 </div>
-
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <input type="text" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        <input type="text" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
@@ -317,12 +386,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; 2024 Creative Portfolio. All rights reserved.</p>
+                    <p>&copy; 2024 Pukar Wanem Limbu. All rights reserved.</p>
                 </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">Behance</a>
-                    <a href="#" class="social-link">Instagram</a>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-artstation"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
