@@ -5,23 +5,23 @@
 }
 
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
-  --accent-color: #06b6d4;
+  --primary-color: #0ea5e9;
+  --secondary-color: #06b6d4;
+  --accent-color: #8b5cf6;
   --success-color: #10b981;
   --warning-color: #f59e0b;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
   --text-light: #94a3b8;
   --background: #ffffff;
   --surface: #f8fafc;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
+  --surface-2: #e2e8f0;
+  --border: #cbd5e1;
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-lg: rgba(0, 0, 0, 0.15);
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-bg: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
 }
 
 body {
@@ -129,7 +129,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: var(--gradient-bg);
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #8b5cf6 100%);
 }
 
 .hero-background {
@@ -554,7 +554,7 @@ section {
   position: relative;
   z-index: 2;
   margin: 10px;
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
 }
 
 .marker-inner i {
@@ -1301,35 +1301,31 @@ body:not(.loaded)::after {
   }
 }
 
-.experience-list {
-  list-style: none;
-  margin: 1rem 0 0.5rem;
-  padding: 0;
-}
-
-.experience-list li {
+.vercel-ai {
+  background: linear-gradient(135deg, #000000, #333333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
 }
 
-.experience-list li::before {
+.vercel-ai::after {
   content: "";
   position: absolute;
+  bottom: -2px;
   left: 0;
-  top: 0.5rem;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary-color);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, #000000, #333333);
+  border-radius: 1px;
 }
 
 .education-section {
-  background: var(--background);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 .experience-section {
-  background: var(--surface);
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
 }
