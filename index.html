@@ -3,750 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pukar Wanem Limbu - Multimedia Generalist</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Pukar Wanem Limbu - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6348;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: #ff6348;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            color: #888;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: 1px solid #333;
+            background: transparent;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border-color: #ff6348;
+            color: #ff6348;
+        }
+
+        .btn-primary {
+            background: #ff6348;
+            border-color: #ff6348;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #ff4530;
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #444;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff6348;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: #111;
+            border: 1px solid #1a1a1a;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: #ff6348;
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 99, 72, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-image:after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-type {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff6348;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-tag {
+            padding: 4px 12px;
+            background: #1a1a1a;
+            border: 1px solid #222;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        .skill-category h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 16px;
+            background: #111;
+            border: 1px solid #1a1a1a;
+            font-size: 14px;
+            color: #888;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: #ff6348;
+            color: #fff;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding-left: 40px;
+            border-left: 1px solid #222;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background: #ff6348;
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .timeline-company {
+            font-size: 16px;
+            color: #ff6348;
+            margin-bottom: 16px;
+        }
+
+        .timeline-description {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .contact-card {
+            padding: 40px;
+            background: #111;
+            border: 1px solid #1a1a1a;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: #ff6348;
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff6348;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+
+        .contact-value a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: #ff6348;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6348;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero .tagline {
+                font-size: 18px;
+            }
+
+            .hero .description {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-list {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Pukar Wanem Limbu</h2>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#education" class="nav-link">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#experience" class="nav-link">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#models" class="nav-link">3D Models</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">PWL</div>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pukar Wanem Limbu</h1>
+            <p class="tagline">Multimedia Generalist × Project Manager</p>
+            <p class="description">
+                Creating immersive 3D experiences, compelling animations, and intuitive interfaces. 
+                Blending artistic vision with technical excellence.
+            </p>
+            <div class="cta-buttons">
+                <a href="#work" class="btn btn-primary">View Work</a>
+                <a href="#contact" class="btn">Get in Touch</a>
             </div>
         </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="gradient-text">Pukar Wanem Limbu</span>
-                </h1>
-                <h2 class="hero-subtitle">Multimedia Generalist</h2>
-                <p class="hero-description">
-                    Passionate and driven, I am to grow as a versatile Game Developer and Technical Artist with a focus on texturing and artistry, working toward becoming a Technical Artist.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">
-                        <span>View Portfolio</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Get In Touch</span>
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-<!--                 <div class="hero-card">
-                    <div class="card-content">
-                        <div class="skill-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>Game Development</h3>
-                        <p>Creating immersive experiences</p>
-                    </div>
-                </div> -->
-                <div class="hero-card">
-                    <div class="card-content">
-                        <div class="skill-icon">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <h3>3D Modeling</h3>
-                        <p>Bringing ideas to life</p>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <div class="card-content">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>Digital Art</h3>
-                        <p>Visual storytelling</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="scroll-indicator">Scroll Down</div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a passionate multimedia generalist with expertise in game development, 3D modeling, and digital art. 
-                        Currently pursuing my MBA in Project Management while working as a Teaching Assistant at Islington College.
+    <!-- Projects Section -->
+    <section id="work">
+        <div class="section-header">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">Selected Work</h2>
+            <p class="section-description">
+                A collection of projects spanning 3D animation, game design, and UI/UX development
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🎮</div>
+                <div class="project-content">
+                    <div class="project-type">Digital Media</div>
+                    <h3 class="project-title">Quantum Rift</h3>
+                    <p class="project-description">
+                        Optimized competitive game map inspired by Valorant and Apex Legends, featuring strategic design and environmental storytelling.
                     </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Maya</span>
+                        <span class="tool-tag">Unreal Engine</span>
+                        <span class="tool-tag">Substance Painter</span>
+                    </div>
                 </div>
-                
-                <div class="skills-section">
-                    <div class="skills-category">
-                        <h3>Software Proficiency</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item" data-skill="95">
-                                <div class="skill-info">
-                                    <span class="skill-name">Autodesk Maya</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="90">
-                                <div class="skill-info">
-                                    <span class="skill-name">Adobe Photoshop</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="85">
-                                <div class="skill-info">
-                                    <span class="skill-name">Unreal Engine</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="88">
-                                <div class="skill-info">
-                                    <span class="skill-name">DaVinci Resolve</span>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="92">
-                                <div class="skill-info">
-                                    <span class="skill-name">Blender</span>
-                                    <span class="skill-percentage">92%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="87">
-                                <div class="skill-info">
-                                    <span class="skill-name">Adobe After Effects</span>
-                                    <span class="skill-percentage">87%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="80">
-                                <div class="skill-info">
-                                    <span class="skill-name">3D Coat</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="89">
-                                <div class="skill-info">
-                                    <span class="skill-name">Substance Painter</span>
-                                    <span class="skill-percentage">89%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <div class="project-type">3D Animation</div>
+                    <h3 class="project-title">CIWS Sector 06</h3>
+                    <p class="project-description">
+                        VFX-heavy short animation inspired by Pacific Rim and Transformers, showcasing mechanical design and dynamic effects.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Maya</span>
+                        <span class="tool-tag">DaVinci Resolve</span>
+                        <span class="tool-tag">Substance Painter</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🌿</div>
+                <div class="project-content">
+                    <div class="project-type">UI/UX Design</div>
+                    <h3 class="project-title">Floryn of Eden</h3>
+                    <p class="project-description">
+                        Plant-focused mobile app featuring AI identification, donation systems, and comprehensive botanical encyclopedia.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Figma</span>
+                        <span class="tool-tag">Balsamiq</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">📅</div>
+                <div class="project-content">
+                    <div class="project-type">UI/UX Design</div>
+                    <h3 class="project-title">Event Management System</h3>
+                    <p class="project-description">
+                        Comprehensive platform for managing college events, designed during teaching assistant internship.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Figma</span>
+                        <span class="tool-tag">Balsamiq</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">👻</div>
+                <div class="project-content">
+                    <div class="project-type">2D Animation</div>
+                    <h3 class="project-title">Whispers</h3>
+                    <p class="project-description">
+                        Narrative short exploring themes of power and consequence through stylized 2D animation and sound design.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Illustrator</span>
+                        <span class="tool-tag">ToonBoom</span>
+                        <span class="tool-tag">After Effects</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">⚔️</div>
+                <div class="project-content">
+                    <div class="project-type">3D Animation</div>
+                    <h3 class="project-title">Sword of The Seven Emperors</h3>
+                    <p class="project-description">
+                        Cinematic short animation featuring mythical weaponry and dragon-inspired narrative elements.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Maya</span>
+                        <span class="tool-tag">Premiere Pro</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Timeline Section -->
-    <section id="education" class="timeline-section education-section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline-wrapper">
-                <div class="timeline-container">
-                    <div class="timeline-line">
-                        <div class="timeline-progress-line"></div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2014">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>Secondary School</h3>
-                                <span class="timeline-date">2014 - 2018</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Delhi Public School, B.P.K.I.H.S</p>
-                                <span class="location">Dharan, Sunsari</span>
-                            </div>
-                        </div>
-                    </div>
+    <!-- About/Experience Section -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-label">Experience</div>
+            <h2 class="section-title">Career Journey</h2>
+            <p class="section-description">
+                From creative visualization to project management and education
+            </p>
+        </div>
 
-                    <div class="timeline-item" data-year="2018">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-school"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>High School</h3>
-                                <span class="timeline-date">2018 - 2021</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Delhi Public School, B.P.K.I.H.S</p>
-                                <span class="location">Dharan, Sunsari</span>
-                            </div>
-                        </div>
-                    </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2025 — Present</div>
+                <h3 class="timeline-title">Academic Tutor</h3>
+                <div class="timeline-company">Islington College</div>
+                <p class="timeline-description">
+                    Leading 3D Modeling and Texturing modules for undergraduate multimedia students. Developing curriculum and mentoring next-generation digital artists.
+                </p>
+            </div>
 
-                    <div class="timeline-item" data-year="2021">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>BSc (Hons) Multimedia</h3>
-                                <span class="timeline-date">2021 - 2024</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Islington College</p>
-                                <p>London Metropolitan University</p>
-                                <span class="achievement">First Class Honors</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024 — 2025</div>
+                <h3 class="timeline-title">Graduate Teaching Assistant</h3>
+                <div class="timeline-company">Islington College</div>
+                <p class="timeline-description">
+                    Assisted senior tutors with Maya and Substance Painter modules. Conducted technical workshops on 3D pipeline workflows and industry best practices.
+                </p>
+            </div>
 
-                    <div class="timeline-item" data-year="2024">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>MBA Project Management</h3>
-                                <span class="timeline-date">2024 - Present</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Islington College</p>
-                                <p>London Metropolitan University</p>
-                                <span class="status">Currently Pursuing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023 — 2024</div>
+                <h3 class="timeline-title">Teaching Assistant</h3>
+                <div class="timeline-company">Islington College</div>
+                <p class="timeline-description">
+                    Taught 3D modeling, texturing, moving image, and VFX. Designed UI/UX for event management system and organized student events.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2021 — 2024</div>
+                <h3 class="timeline-title">BSc (Hons) Multimedia</h3>
+                <div class="timeline-company">London Metropolitan University</div>
+                <p class="timeline-description">
+                    Graduated with First Class Honors. Specialized in 3D graphics, animation, and digital media production.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Work Experience Timeline Section -->
-    <section id="experience" class="timeline-section experience-section">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline-wrapper">
-                <div class="timeline-container">
-                    <div class="timeline-line">
-                        <div class="timeline-progress-line"></div>
-                    </div>
-
-                    <div class="timeline-item" data-year="2022">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-chalkboard-user"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>Academic Tutor</h3>
-                                <span class="timeline-date">2022 - Present</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Tutor for Modeling and Texturing module</p>
-                                <span class="role">Academic Support</span>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="timeline-item" data-year="2014">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>Graduate Teaching Assistant</h3>
-                                <span class="timeline-date">2024 - 2025</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Assisting Senior Tutors and Lecturers</p>
-                                <p>Academic Content Design</p>
-                                <p>Conducted Events</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-year="2023">
-                        <div class="timeline-marker">
-                            <div class="marker-inner">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <h3>Teaching Assistant</h3>
-                                <span class="timeline-date">2023 - Present</span>
-                            </div>
-                            <div class="card-body">
-                                <p>Islington College</p>
-                                <p>Taught 3D Modeling and Texturing</p>
-                                <p>Taught Moving Image and VFX</p>
-                                <p>Created UI/UX Design for Event Management System</p>
-                                <p>Conducted Events</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-label">Expertise</div>
+            <h2 class="section-title">Skills & Tools</h2>
+            <p class="section-description">
+                Technical proficiency across creative and management disciplines
+            </p>
         </div>
-    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">
-                    <span>All</span>
-                </button>
-                <button class="filter-btn" data-filter="character">
-                    <span>Character Arts</span>
-                </button>
-                <button class="filter-btn" data-filter="environment">
-                    <span>Environment Arts</span>
-                </button>
-                <button class="filter-btn" data-filter="2d">
-                    <span>2D Arts</span>
-                </button>
-                <button class="filter-btn" data-filter="video">
-                    <span>Video Editing</span>
-                </button>
-                <button class="filter-btn" data-filter="book">
-                    <span>Book Design</span>
-                </button>
-                <button class="filter-btn" data-filter="graphic">
-                    <span>Graphic Design</span>
-                </button>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>3D & Animation</h3>
+                <div class="skill-list">
+                    <div class="skill-item">Autodesk Maya</div>
+                    <div class="skill-item">Unreal Engine</div>
+                    <div class="skill-item">3D Coat</div>
+                    <div class="skill-item">Rizom UV</div>
+                    <div class="skill-item">Substance Painter</div>
+                    <div class="skill-item">Character Design</div>
+                </div>
             </div>
-            <div class="portfolio-grid">
-                <!-- Character Arts -->
-                <div class="portfolio-item" data-category="character">
-                    <div class="portfolio-image">
-                        <img src="/Portfolio/cygnus-1.jpg" alt="Character Art 1">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Fantasy Character</h3>
-                                <p>3D Character modeling and texturing</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="character">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Character Art 2">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Sci-Fi Character</h3>
-                                <p>Game-ready character design</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Environment Arts -->
-                <div class="portfolio-item" data-category="environment">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Environment Art 1">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Forest Environment</h3>
-                                <p>3D environment for game level</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="environment">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Environment Art 2">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Urban Scene</h3>
-                                <p>Detailed city environment</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 2D Arts -->
-                <div class="portfolio-item" data-category="2d">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="2D Art 1">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Digital Illustration</h3>
-                                <p>Concept art and illustration</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="2d">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="2D Art 2">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Character Concept</h3>
-                                <p>2D character design</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Video Editing -->
-                <div class="portfolio-item" data-category="video">
-                    <div class="portfolio-image">
-                        <img src="/placeholder.svg?height=300&width=400" alt="Video Project 1">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Animation Reel</h3>
-                                <p>3D animation showcase</p>
-                                <div class="overlay-buttons">
-                                    <button class="view-btn">
-                                        <i class="fas fa-play"></i>
-                                        Play
-                                    </button>
-                                    <button class="info-btn">
-                                        <i class="fas fa-info"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more portfolio items as needed -->
-            </div>
-        </div>
-    </section>
 
-    <!-- 3D Models Section -->
-    <section id="models" class="models">
-        <div class="container">
-            <h2 class="section-title">Free 3D Models</h2>
-            <p class="section-subtitle">Download high-quality 3D models for your projects</p>
-            <div class="models-grid">
-                <div class="model-card">
-                    <div class="model-preview">
-                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 1">
-                        <div class="model-overlay">
-                            <button class="preview-btn">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-                    <div class="model-info">
-                        <h3>Fantasy Sword</h3>
-                        <p>Game-ready low poly sword</p>
-                        <div class="model-stats">
-                            <div class="stat">
-                                <i class="fas fa-shapes"></i>
-                                <span>1,200 Polygons</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-file"></i>
-                                <span>.fbx, .obj</span>
-                            </div>
-                        </div>
-                        <button class="download-btn">
-                            <i class="fas fa-download"></i>
-                            <span>Download</span>
-                        </button>
-                    </div>
+            <div class="skill-category">
+                <h3>Post-Production</h3>
+                <div class="skill-list">
+                    <div class="skill-item">After Effects</div>
+                    <div class="skill-item">Premiere Pro</div>
+                    <div class="skill-item">DaVinci Resolve</div>
+                    <div class="skill-item">Photoshop</div>
+                    <div class="skill-item">Motion Graphics</div>
+                    <div class="skill-item">VFX</div>
                 </div>
-                <div class="model-card">
-                    <div class="model-preview">
-                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 2">
-                        <div class="model-overlay">
-                            <button class="preview-btn">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-                    <div class="model-info">
-                        <h3>Medieval House</h3>
-                        <p>Detailed building model</p>
-                        <div class="model-stats">
-                            <div class="stat">
-                                <i class="fas fa-shapes"></i>
-                                <span>3,500 Polygons</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-file"></i>
-                                <span>.fbx, .blend</span>
-                            </div>
-                        </div>
-                        <button class="download-btn">
-                            <i class="fas fa-download"></i>
-                            <span>Download</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="model-card">
-                    <div class="model-preview">
-                        <img src="/placeholder.svg?height=200&width=200" alt="3D Model 3">
-                        <div class="model-overlay">
-                            <button class="preview-btn">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-                    <div class="model-info">
-                        <h3>Sci-Fi Weapon</h3>
-                        <p>Futuristic blaster design</p>
-                        <div class="model-stats">
-                            <div class="stat">
-                                <i class="fas fa-shapes"></i>
-                                <span>2,800 Polygons</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-file"></i>
-                                <span>.fbx, .obj</span>
-                            </div>
-                        </div>
-                        <button class="download-btn">
-                            <i class="fas fa-download"></i>
-                            <span>Download</span>
-                        </button>
-                    </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Design & Management</h3>
+                <div class="skill-list">
+                    <div class="skill-item">UI/UX Design</div>
+                    <div class="skill-item">Figma</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Team Leadership</div>
+                    <div class="skill-item">Workflow Design</div>
+                    <div class="skill-item">Critical Thinking</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Address</h3>
-                            <p>Imadole, Lalitpur</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+9779807390300</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>pukar.wanem.limbu@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Website</h3>
-                            <p>https://pukar.wanem.artstation.com/</p>
-                        </div>
-                    </div>
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-description">
+                Available for freelance projects, collaborations, and teaching opportunities
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:pukarwanemlimbu13@gmail.com">pukarwanemlimbu13@gmail.com</a>
                 </div>
-                <form class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">+977 9764584913</div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🎨</div>
+                <div class="contact-label">Portfolio</div>
+                <div class="contact-value">
+                    <a href="https://pukar-wanem.artstation.com/" target="_blank">ArtStation</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <div class="contact-label">Location</div>
+                <div class="contact-value">Imadole, Lalitpur</div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <h3>Pukar Wanem Limbu</h3>
-                    <p>Multimedia Generalist & Technical Artist</p>
-                </div>
-                <div class="footer-center">
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-artstation"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <p>&copy; 2024 Pukar Wanem Limbu. All rights reserved.</p>
-                    <p class="made-with">Made with <span class="heart">❤️</span> using <strong class="vercel-ai">Vercel AI</strong></p>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://pukarwanemlimbu.com.np/" target="_blank">Website</a>
+                <a href="https://pukar-wanem.artstation.com/" target="_blank">ArtStation</a>
+                <a href="https://www.instagram.com/_paaprasu/" target="_blank">Instagram</a>
             </div>
+            <p class="copyright">© 2025 Pukar Wanem Limbu. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
