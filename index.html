@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pukar Wanem Limbu — Portfolio</title>
+<title>puks</title>
 <style>
 :root{
   --bg:#222; --side:#1b1b1b; --head:#161616; --ink:#ddd; --mute:#999; --line:#444; --link:#5a8df0; --th:#555; --cell:#262626;
@@ -154,7 +154,7 @@ dialog.dw[open]{display:flex;flex-direction:column}
 .view[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){.view{transition:none}}
 .doodle::before{display:none}
-.doodle svg{width:88%;height:auto;color:var(--ink)}
+.doodle canvas{width:100%;height:100%;display:block}
 table.wide{width:100%}
 table.wide td{vertical-align:top}
 table.skills td{vertical-align:top;min-width:150px}
@@ -272,17 +272,7 @@ table td.mo{display:none}
   <h1>Pukar Wanem Limbu</h1>
   <div class="crumb">&lt; Portfolio</div>
 
-  <figure class="fig"><div class="im doodle"><svg viewBox="0 0 200 200" role="img" aria-label="Line art doodle of a monitor rendering a wireframe cube at 99 percent, next to a steaming coffee mug and a keyboard" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-<rect x="26" y="24" width="148" height="98" rx="7"/><rect x="35" y="33" width="130" height="80" rx="3"/>
-<path d="M100 122v16M70 142h60"/>
-<g stroke="var(--orange)"><rect x="56" y="56" width="36" height="36"/><rect x="72" y="42" width="36" height="36"/><path d="M56 56l16-14M92 56l16-14M56 92l16-14M92 92l16-14"/></g>
-<rect x="116" y="96" width="40" height="8" rx="2"/><path d="M118 100h33" stroke="var(--orange)" stroke-width="5"/>
-<text x="120" y="92" font-size="9" font-family="monospace" fill="currentColor" stroke="none">99%</text>
-<path d="M152 40l4 4m0-4l-4 4"/>
-<rect x="30" y="158" width="76" height="16" rx="3"/><path d="M38 166h4m6 0h4m6 0h4m6 0h4m6 0h4m6 0h4"/>
-<path d="M126 152h30v22a9 9 0 0 1-9 9h-12a9 9 0 0 1-9-9z"/><path d="M156 157q12 0 12 9t-12 9"/>
-<path d="M134 146q-4-5 0-9t0-9M146 146q-4-5 0-9t0-9" stroke="var(--orange)"/>
-</svg></div><figcaption>Fig. 1: Render at 99%. Any minute now.</figcaption></figure>
+  <figure class="fig"><div class="im doodle"><canvas id="bp" aria-label="Animated blueprint wireframe of a knot, rotating in a loop"></canvas></div><figcaption>Fig. 1: Wireframe loop. Please do not touch the polygons.</figcaption></figure>
   <p>Here is the portfolio of a Multimedia Generalist and multi-disciplinary designer specializing in 3D modeling, character design, jewelry design, branding and UI collaboration. It collects selected <a href="#work">work</a>, <a href="#experience">experience</a>, <a href="#education">education</a> and <a href="#skills">skills</a>.</p>
   <p>Creating immersive 3D experiences, compelling animations, and intuitive interfaces. Blending artistic vision with technical excellence.</p>
   <div class="toc"><b>Contents</b><ol>
@@ -297,13 +287,12 @@ table td.mo{display:none}
   <div class="clear"></div>
 
   <h2 id="work">Work</h2>
-  <div class="box"><b>Note:</b> Select a project to open a larger preview. Use the filter buttons or the search box to narrow the list.</div>
+  <div class="box"><b>Note:</b> Select a project to open a larger preview.</div>
   <div class="filters" role="group" aria-label="Filter work"><button aria-pressed="true" data-cat="all">All</button><button aria-pressed="false" data-cat="Graphics">Graphics</button><button aria-pressed="false" data-cat="3D">3D</button></div>
   <div class="tblwrap"><table id="tbl"><thead><tr><th>Preview</th><th>Project</th><th>Type</th><th>Tags</th></tr></thead><tbody></tbody></table></div>
   <div id="pager"></div>
 
   <h2 id="viewer">3D viewer</h2>
-  <div class="box"><b>Note:</b> The shapes are placeholders. Each model is a tab, and your own .glb files can replace them.</div>
   <p>Pick a model, drag it to rotate, and switch render passes to see it as a wireframe, clay render or low-poly version.</p>
   <div class="viewer">
     <div class="passes" id="models" role="group" aria-label="Model"></div>
@@ -339,7 +328,6 @@ table td.mo{display:none}
   <div class="view" id="v-disc" hidden>
   <h1>Discussion: Pukar Wanem Limbu</h1>
   <div class="crumb">&lt; <a href="#top">Portfolio</a></div>
-  <div class="box"><b>Note:</b> In this preview, posts and votes are saved only in your own browser. A live site needs a small server to share them between visitors, and a login only you have for the artist badge.</div>
   <p>Leave a review or start a thread about the work. No account is needed, the name field is optional, and replies can be nested.</p>
   <div id="davg" class="mut"></div>
   <div id="dform"></div>
@@ -565,6 +553,80 @@ f();
   cv.onpointerup=cv.onpointercancel=()=>{d=null;cv.style.cursor='grab'};
   (function loop(){if(vis){if(!d&&!calm)root.rotation.y+=.008;r.render(sc,cam)}requestAnimationFrame(loop)})();
   select(0);
+})();
+(function(){
+  const c=document.getElementById('bp');
+  if(!c||!c.getContext)return;
+  const S=280,dpr=Math.min(window.devicePixelRatio||1,2),x=c.getContext('2d');
+  c.width=c.height=S*dpr;x.scale(dpr,dpr);
+  const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const BG='#0d3b73',MINOR='rgba(150,195,255,.16)',MAJOR='rgba(150,195,255,.34)',INK='#d6e9ff',ACC='#ffb36b';
+
+  /* ---- build a tube around a (2,3) torus knot ---- */
+  const N=84,M=8,R=.24,rings=[];
+  const knot=t=>{const r=1+.45*Math.cos(3*t);return[r*Math.cos(2*t),r*Math.sin(2*t),.55*Math.sin(3*t)]};
+  const norm=v=>{const l=Math.hypot(v[0],v[1],v[2])||1;return[v[0]/l,v[1]/l,v[2]/l]};
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  for(let i=0;i<N;i++){
+    const t=i/N*Math.PI*2,e=.01,p=knot(t),a=knot(t-e),b=knot(t+e);
+    const T=norm([b[0]-a[0],b[1]-a[1],b[2]-a[2]]),B=norm(cross(T,[0,0,1])),Nn=cross(B,T),ring=[];
+    for(let k=0;k<M;k++){const q=k/M*Math.PI*2,cq=Math.cos(q)*R,sq=Math.sin(q)*R;
+      ring.push([p[0]+cq*B[0]+sq*Nn[0],p[1]+cq*B[1]+sq*Nn[1],p[2]+cq*B[2]+sq*Nn[2]])}
+    rings.push(ring)}
+
+  /* ---- rotate + perspective ---- */
+  function proj(p,ay,ax){
+    const X=p[0]*Math.cos(ay)+p[2]*Math.sin(ay),Z=-p[0]*Math.sin(ay)+p[2]*Math.cos(ay),Y=p[1];
+    const Y2=Y*Math.cos(ax)-Z*Math.sin(ax),Z2=Y*Math.sin(ax)+Z*Math.cos(ax),s=4.2/(4.2-Z2)*52;
+    return[S/2+X*s,S/2-Y2*s-8,Z2]}
+
+  const link=(a,b)=>{x.beginPath();for(let k=0;k<M;k++){x.moveTo(a[k][0],a[k][1]);x.lineTo(b[k][0],b[k][1])}x.stroke()};
+
+  function frame(time){
+    const cyc=9,t=time%cyc,rv=calm?1:Math.min(1,t/3),fade=calm?1:(t>8?9-t:1);   /* draw-in 3s, hold, fade-out 1s, repeat */
+    const ay=calm?.9:time*.55,ax=.62;
+    x.globalAlpha=1;x.fillStyle=BG;x.fillRect(0,0,S,S);
+
+    /* blueprint grid */
+    x.lineWidth=1;
+    [[MINOR,0],[MAJOR,1]].forEach(([col,major])=>{x.strokeStyle=col;x.beginPath();
+      for(let g=0;g<=S;g+=14){if((g%56===0)!==!!major)continue;x.moveTo(g+.5,0);x.lineTo(g+.5,S);x.moveTo(0,g+.5);x.lineTo(S,g+.5)}x.stroke()});
+    x.strokeStyle=INK;x.globalAlpha=.6;x.strokeRect(8.5,8.5,S-17,S-17);
+
+    /* wireframe knot */
+    const P=rings.map(r=>r.map(p=>proj(p,ay,ax))),lim=Math.max(2,Math.floor(rv*N));
+    x.strokeStyle=INK;x.lineJoin='round';
+    for(let i=0;i<lim;i++){
+      const r=P[i],zc=r.reduce((a,p)=>a+p[2],0)/M,depth=Math.min(1,Math.max(0,(zc+1.9)/3.8));
+      x.globalAlpha=(.2+.8*depth)*fade;
+      x.beginPath();r.forEach((p,k)=>k?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.stroke();
+      if(i>0)link(P[i-1],r)}
+    if(rv>=1){x.globalAlpha=.5*fade;link(P[N-1],P[0])}
+
+    /* orange scan line while the drawing builds */
+    if(rv<1){const sx=16+rv*(S-32);x.globalAlpha=.85;x.strokeStyle=ACC;x.beginPath();x.moveTo(sx,14);x.lineTo(sx,S-14);x.stroke()}
+
+    /* dimension line */
+    x.globalAlpha=1;x.strokeStyle=ACC;x.fillStyle=INK;x.font='9px monospace';x.textAlign='center';
+    const dy=S-54;
+    x.beginPath();x.moveTo(34,dy);x.lineTo(S-34,dy);x.moveTo(34,dy-5);x.lineTo(34,dy+5);x.moveTo(S-34,dy-5);x.lineTo(S-34,dy+5);
+    x.moveTo(34,dy);x.lineTo(42,dy-3);x.moveTo(34,dy);x.lineTo(42,dy+3);x.moveTo(S-34,dy);x.lineTo(S-42,dy-3);x.moveTo(S-34,dy);x.lineTo(S-42,dy+3);x.stroke();
+    x.fillStyle=BG;x.fillRect(S/2-24,dy-6,48,12);x.fillStyle=INK;x.fillText('\u00D8 3.40',S/2,dy+3);
+
+    /* callout A */
+    x.strokeStyle=ACC;x.beginPath();x.arc(S-40,40,9,0,Math.PI*2);x.moveTo(S-47,46);x.lineTo(S/2+34,S/2-34);x.stroke();
+    x.fillStyle=INK;x.fillText('A',S-40,43);
+
+    /* title block */
+    x.strokeStyle=INK;x.globalAlpha=.8;x.strokeRect(S-124,S-40,112,26);x.beginPath();x.moveTo(S-124,S-27);x.lineTo(S-12,S-27);x.stroke();
+    x.globalAlpha=1;x.textAlign='left';x.fillText('WIREFRAME  REV 03',S-119,S-31);x.fillText('SCALE 1:1   SHEET 1/1',S-119,S-18);
+    x.globalAlpha=1}
+
+  let vis=true;
+  if(window.IntersectionObserver)new IntersectionObserver(e=>{vis=e[0].isIntersecting}).observe(c);
+  if(calm){frame(4);return}
+  const t0=performance.now();
+  (function loop(n){if(vis&&!document.hidden)frame((n-t0)/1000);requestAnimationFrame(loop)})(t0);
 })();
 </script>
 </body>
