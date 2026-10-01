@@ -4,7 +4,8 @@
   After editing, save the file and redeploy (push to GitHub, and Vercel publishes it).
 */
 const SITE = {
-
+  supabase: { url: "https://bfdrkgvzlmiruuufxkdb.supabase.co", anonKey: "sb_publishable_jO-QBGv_uHJYQEqoJQJQ8g_ABqEzzWJ" },
+  artistEmail: "pukarwanemlimbu13@gmail.com",
   // Shown in the Email links and the Contact section.
   email: "pukarwanemlimbu13@gmail.com",
 
