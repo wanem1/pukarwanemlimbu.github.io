@@ -1,0 +1,10 @@
+{
+  "siteName": "Pukar Wanem Limbu",
+  "baseUrl": "https://your-site.vercel.app",
+  "homeLink": "../index.html",
+  "outDir": "../articles",
+  "sectionName": "Articles",
+  "intro": "Articles and write-ups on HR, design and 3D.",
+  "rights": "© Pukar Wanem Limbu. You may quote short excerpts with credit and a link back.",
+  "notice": "Shared for reference and learning. Please cite it if you use its ideas, and do not submit it as your own work."
+}
