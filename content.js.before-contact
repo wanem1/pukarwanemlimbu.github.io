@@ -4,10 +4,6 @@
   After editing, save the file and redeploy (push to GitHub, and Vercel publishes it).
 */
 const SITE = {
-
-  // Contact form: paste your Web3Forms access key here (see INSTALL.md).
-  contact: { accessKey: "1f393668-a1ae-4248-aa41-615d925d0920" },
-
   supabase: { url: "https://bfdrkgvzlmiruuufxkdb.supabase.co", anonKey: "sb_publishable_jO-QBGv_uHJYQEqoJQJQ8g_ABqEzzWJ" },
   artistEmail: "pukarwanemlimbu13@gmail.com",
   // Shown in the Email links and the Contact section.

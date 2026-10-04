@@ -247,9 +247,6 @@ table td.mo{display:none}
   .thumb{width:56px;height:70px}
 }
 .lnk{background:none;border:0;color:var(--link);font:inherit;cursor:pointer;padding:0;text-decoration:underline}
-.cstat{font-size:13px;margin-left:8px}
-.cstat.ok{color:#3cb371}
-.cstat.bad{color:#e5534b}
 </style>
 </head>
 <body>
@@ -327,16 +324,6 @@ table td.mo{display:none}
 
   <h2 id="contact">Contact</h2>
   <div class="box idea"><b>Idea:</b> Have a project in mind? Write to <a data-email href="#">email</a> with a short description, a deadline and a rough budget.</div>
-  <form class="cf" id="contact-form" novalidate>
-    <div class="row">
-      <div><label for="cf-name">Name</label><input id="cf-name" maxlength="80" autocomplete="name" required></div>
-      <div><label for="cf-mail">Your email</label><input id="cf-mail" type="email" maxlength="120" autocomplete="email" inputmode="email" required></div>
-    </div>
-    <label for="cf-sub">Subject (optional)</label><input id="cf-sub" maxlength="120">
-    <label for="cf-msg">Message</label><textarea id="cf-msg" maxlength="2000" required></textarea>
-    <input type="checkbox" id="cf-bot" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button type="submit" id="cf-send">Send message</button> <span id="cf-status" class="cstat" role="status" aria-live="polite"></span>
-  </form>
 
   </div>
   <div class="view" id="v-disc" hidden>
@@ -360,7 +347,6 @@ table td.mo{display:none}
 <script src="content.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="discussion.js"></script>
-<script defer src="contact.js"></script>
 <script>
 const W=SITE.projects.map((p,i)=>({n:p.title,t:p.type,k:p.tags,img:SITE.imageFolder+p.image,bg:`linear-gradient(135deg,hsl(${(i*47)%360} 60% 32%),hsl(${(i*47+70)%360} 55% 18%))`}));
 const $=s=>document.querySelector(s),g=$('#tbl tbody'),dlg=$('#dlg'),dimg=$('#dimg');
