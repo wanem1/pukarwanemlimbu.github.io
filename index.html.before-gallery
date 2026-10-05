@@ -250,24 +250,6 @@ table td.mo{display:none}
 .cstat{font-size:13px;margin-left:8px}
 .cstat.ok{color:#3cb371}
 .cstat.bad{color:#e5534b}
-/* joined work cards */
-.cards{column-width:300px;column-gap:0;border-top:2px solid var(--mute);border-left:2px solid var(--mute);margin:6px 0 10px}
-.card{display:block;width:100%;padding:0;margin:0;text-align:left;font:inherit;color:inherit;background:var(--cell);border:0;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);cursor:pointer;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid}
-.card:hover,.card:focus-visible{outline:2px solid var(--link);outline-offset:-2px}
-.card[hidden]{display:none}
-.card .art{display:block;aspect-ratio:4/5;overflow:hidden}
-.card .art.loaded{aspect-ratio:auto}
-.card .art img{display:block;width:100%;height:auto}
-.card .art img[hidden]{display:none}
-.card .row{display:grid;grid-template-columns:78px 1fr;border-top:1px solid var(--mute)}
-.card .k{background:var(--th);padding:7px 8px;font-weight:700;font-size:13px;text-align:center;border-right:1px solid var(--mute)}
-.card .v{padding:7px 10px;font-size:14px;overflow-wrap:anywhere}
-.card .t{color:var(--link)}
-.card:hover .t{text-decoration:underline}
-#dlg{border:2px solid var(--mute)}
-@media (max-width:760px){.card .row{grid-template-columns:62px 1fr}.card .k,.card .v{font-size:12.5px;padding:6px}}
-@media (max-width:520px){.cards{column-width:auto;column-count:1}}
-@media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 </head>
 <body>
@@ -312,7 +294,7 @@ table td.mo{display:none}
   <h2 id="work">Work</h2>
   <div class="box"><b>Note:</b> Select a project to open a larger preview.</div>
   <div class="filters" role="group" aria-label="Filter work"><button aria-pressed="true" data-cat="all">All</button><button aria-pressed="false" data-cat="Graphics">Graphics</button><button aria-pressed="false" data-cat="3D">3D</button></div>
-  <div id="cards" class="cards"></div>
+  <div class="tblwrap"><table id="tbl"><thead><tr><th>Preview</th><th>Project</th><th>Type</th><th>Tags</th></tr></thead><tbody></tbody></table></div>
   <div id="pager"></div>
 
   <h2 id="viewer">3D viewer</h2>
@@ -382,13 +364,11 @@ table td.mo{display:none}
 <script defer src="contact.js"></script>
 <script>
 const W=SITE.projects.map((p,i)=>({n:p.title,t:p.type,k:p.tags,img:SITE.imageFolder+p.image,bg:`linear-gradient(135deg,hsl(${(i*47)%360} 60% 32%),hsl(${(i*47+70)%360} 55% 18%))`}));
-const $=s=>document.querySelector(s),g=$('#cards'),dlg=$('#dlg'),dimg=$('#dimg');
-g.innerHTML=W.map((w,i)=>`<button type="button" class="card" data-i="${i}" data-t="${w.t}"><span class="art" style="background:${w.bg}"><img src="${w.img}" alt="${w.n}" loading="lazy"></span><span class="row"><span class="k">Project</span><span class="v t">${w.n}</span></span><span class="row"><span class="k">Type</span><span class="v">${w.t}</span></span><span class="row"><span class="k">Tags</span><span class="v">${w.k}</span></span></button>`).join('');
+const $=s=>document.querySelector(s),g=$('#tbl tbody'),dlg=$('#dlg'),dimg=$('#dimg');
+g.innerHTML=W.map((w,i)=>`<tr data-i="${i}" data-t="${w.t}"><td><div class="thumb" style="background:${w.bg}"><img src="${w.img}" alt="${w.n}" loading="lazy"></div></td><td><a href="#">${w.n}</a></td><td>${w.t}</td><td>${w.k}</td></tr>`).join('');
 g.addEventListener('error',e=>{if(e.target.tagName==='IMG')e.target.hidden=true},true);
-g.addEventListener('load',e=>{if(e.target.tagName==='IMG')e.target.parentNode.classList.add('loaded')},true);
-g.querySelectorAll('.art img').forEach(i=>{if(i.complete&&i.naturalWidth)i.parentNode.classList.add('loaded')});
 dimg.addEventListener('error',()=>dimg.hidden=true);
-g.onclick=e=>{const b=e.target.closest('.card');if(!b)return;e.preventDefault();const w=W[b.dataset.i];
+g.onclick=e=>{const b=e.target.closest('tr');if(!b)return;e.preventDefault();const w=W[b.dataset.i];
   $('#di').style.background=w.bg;dimg.hidden=false;dimg.src=w.img;dimg.alt=w.n;$('#dt').textContent=w.n;$('#dp').textContent=w.t+'. '+w.k+'.';
   dlg.showModal?dlg.showModal():dlg.setAttribute('open','')};
 $('#dx').onclick=()=>dlg.close?dlg.close():dlg.removeAttribute('open');
@@ -396,7 +376,7 @@ dlg.onclick=e=>{if(e.target===dlg)dlg.close()};
 let cat='all',pg=1;const PER=6;
 function f(reset){
   if(reset)pg=1;
-  const q=$('#q').value.toLowerCase(),rows=[...g.querySelectorAll('.card')];
+  const q=$('#q').value.toLowerCase(),rows=[...g.querySelectorAll('tr')];
   const m=rows.filter(r=>(cat==='all'||r.dataset.t===cat)&&r.textContent.toLowerCase().includes(q));
   const pages=Math.max(1,Math.ceil(m.length/PER));if(pg>pages)pg=pages;
   rows.forEach(r=>r.hidden=true);
