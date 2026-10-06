@@ -23,6 +23,7 @@ const docs = [];
 for (const f of fs.readdirSync(DOCS).filter(f => f.endsWith('.md') && !f.startsWith('_'))) {
   const { data: m, content } = matter(fs.readFileSync(path.join(DOCS, f), 'utf8'));
   if (m.draft) continue;
+  if (m.date instanceof Date) m.date = m.date.toISOString().slice(0, 10);
   m.slug = m.slug || f.replace(/\.md$/, '');
   let md = content;
   const notes = [];                                              // footnotes: [^1]: text
@@ -46,6 +47,7 @@ for (const f of fs.readdirSync(DOCS).filter(f => f.endsWith('.md') && !f.startsW
   const rows = [['Module', [m.module, m.moduleName].filter(Boolean).join(': ')], ['Institution', m.institution], ['Level', m.level], ['Type', m.type], ['Author', m.author], ['Date', m.date], ['Word count', m.words && Number(m.words).toLocaleString('en-GB')], ['Grade', m.grade]].filter(r => r[1]);
   const art = m.layout === 'article';
   const words = html.replace(/<[^>]+>/g, ' ').split(/\s+/).length, mins = Math.max(1, Math.round(words / 220));
+  m.mins = mins;
   const body = art ? `<div class="wrap art"><main><nav class="crumb"><a href="index.html">${esc(cfg.sectionName)}</a>${m.category ? ' / ' + esc(m.category) : ''}</nav>
 <h1>${esc(m.title)}</h1><p class="lead">${esc(m.standfirst || m.summary || '')}</p>
 <p class="byline"><b>${esc(m.author)}</b> | ${esc(m.date)} | ${mins} min read${m.adapted ? ' | ' + esc(m.adapted) : ''}</p>
@@ -73,6 +75,8 @@ const imgSrc = path.join(DOCS, 'images');
 if (fs.existsSync(imgSrc)) fs.cpSync(imgSrc, path.join(OUT, 'images'), { recursive: true });
 
 docs.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+const latest = docs.filter(d => d.layout === 'article').map(d => ({ slug: d.slug, title: d.title, category: d.category || '', summary: d.standfirst || d.summary || '', date: String(d.date), mins: d.mins, url: path.basename(OUT) + '/' + d.slug + '.html' }));
+fs.writeFileSync(path.join(OUT, 'latest.js'), '/* written by build.js, do not edit */\nconst ARTICLES = ' + JSON.stringify(latest, null, 2) + ';\nconst ARTICLES_INDEX = ' + JSON.stringify(path.basename(OUT) + '/index.html') + ';\n');
 const tags = [...new Set(docs.flatMap(d => d.tags || []))];
 const idx = `<div class="wrap one"><main><h1>${esc(cfg.sectionName)}</h1><p class="lead">${esc(cfg.intro)}</p>
 <input id="q" type="search" placeholder="Search" aria-label="Search">

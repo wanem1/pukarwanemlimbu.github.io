@@ -250,24 +250,40 @@ table td.mo{display:none}
 .cstat{font-size:13px;margin-left:8px}
 .cstat.ok{color:#3cb371}
 .cstat.bad{color:#e5534b}
-/* joined work cards */
-.cards{column-width:300px;column-gap:0;border-top:2px solid var(--mute);border-left:2px solid var(--mute);margin:6px 0 10px}
-.card{display:block;width:100%;padding:0;margin:0;text-align:left;font:inherit;color:inherit;background:var(--cell);border:0;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);cursor:pointer;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid}
+/* tile work cards */
+main{max-width:1200px;margin-left:auto;margin-right:auto}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--mute);border-left:2px solid var(--mute);margin:6px 0 10px}
+.card{display:flex;flex-direction:column;width:100%;min-width:0;padding:0;margin:0;text-align:left;font:inherit;color:inherit;background:var(--cell);border:0;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);cursor:pointer}
 .card:hover,.card:focus-visible{outline:2px solid var(--link);outline-offset:-2px}
 .card[hidden]{display:none}
-.card .art{display:block;aspect-ratio:4/5;overflow:hidden}
-.card .art.loaded{aspect-ratio:auto}
-.card .art img{display:block;width:100%;height:auto}
+.card .art{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--side)}
+.card .art img{display:block;width:100%;height:100%;object-fit:contain}
 .card .art img[hidden]{display:none}
 .card .row{display:grid;grid-template-columns:78px 1fr;border-top:1px solid var(--mute)}
-.card .k{background:var(--th);padding:7px 8px;font-weight:700;font-size:13px;text-align:center;border-right:1px solid var(--mute)}
-.card .v{padding:7px 10px;font-size:14px;overflow-wrap:anywhere}
+.card .row:last-child{flex:1}
+.card .k{background:var(--th);padding:8px;font-weight:700;font-size:13px;text-align:center;border-right:1px solid var(--mute)}
+.card .v{padding:8px 10px;font-size:14px;overflow-wrap:anywhere}
 .card .t{color:var(--link)}
 .card:hover .t{text-decoration:underline}
 #dlg{border:2px solid var(--mute)}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.card .row{grid-template-columns:62px 1fr}.card .k,.card .v{font-size:12.5px;padding:6px}}
-@media (max-width:520px){.cards{column-width:auto;column-count:1}}
+@media (max-width:520px){.cards{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
+/* latest articles */
+.acards{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));border-top:2px solid var(--mute);border-left:2px solid var(--mute);margin:6px 0 14px}
+.acard{display:flex;flex-direction:column;min-width:0;background:var(--cell);color:inherit;text-decoration:none;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute)}
+.acard:hover,.acard:focus-visible{outline:2px solid var(--link);outline-offset:-2px}
+.acard .ak{background:var(--th);padding:8px 12px;font-weight:700;font-size:13px;border-bottom:1px solid var(--mute)}
+.acard .at{display:block;padding:14px 14px 6px;color:var(--link);font-size:19px;line-height:1.3;font-weight:700}
+.acard:hover .at{text-decoration:underline}
+.acard .as{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;padding:0 14px 14px;font-size:14px;line-height:1.55;flex:1}
+.acard .am{background:var(--th);padding:8px 12px;font-size:12.5px;color:var(--mute);border-top:1px solid var(--mute)}
+.btn-more{display:inline-block;border:2px solid var(--mute);background:var(--th);color:var(--ink);padding:10px 20px;font-weight:700;text-decoration:none}
+.btn-more:hover,.btn-more:focus-visible{border-color:var(--link);color:var(--link)}
+section[hidden],li[hidden],[data-art-link][hidden]{display:none!important}
+@media (max-width:900px){.acards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.acards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -298,7 +314,7 @@ table td.mo{display:none}
   <p>Here is the portfolio of a Multimedia Generalist and multi-disciplinary designer specializing in 3D modeling, character design, jewelry design, branding and UI collaboration. It collects selected <a href="#work">work</a>, <a href="#experience">experience</a>, <a href="#education">education</a> and <a href="#skills">skills</a>.</p>
   <p>Creating immersive 3D experiences, compelling animations, and intuitive interfaces. Blending artistic vision with technical excellence.</p>
   <div class="toc"><b>Contents</b><ol>
-    <li><a href="#work">Work</a><ol><li><a href="#work">Selected projects</a></li><li><a href="#viewer">3D viewer</a></li></ol></li>
+    <li><a href="#work">Work</a><ol><li><a href="#work">Selected projects</a></li><li><a href="#articles" data-art-link>Latest articles</a></li><li><a href="#viewer">3D viewer</a></li></ol></li>
     <li><a href="articles/">Articles</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -314,6 +330,12 @@ table td.mo{display:none}
   <div class="filters" role="group" aria-label="Filter work"><button aria-pressed="true" data-cat="all">All</button><button aria-pressed="false" data-cat="Graphics">Graphics</button><button aria-pressed="false" data-cat="3D">3D</button></div>
   <div id="cards" class="cards"></div>
   <div id="pager"></div>
+
+  <section id="articles-sec">
+    <h2 id="articles">Latest articles</h2>
+    <div class="acards" id="acards"></div>
+    <p class="more"><a class="btn-more" id="amore" href="articles/index.html">View all articles &#9656;</a></p>
+  </section>
 
   <h2 id="viewer">3D viewer</h2>
   <p>Pick a model, drag it to rotate, and switch render passes to see it as a wireframe, clay render or low-poly version.</p>
@@ -377,6 +399,7 @@ table td.mo{display:none}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="content.js"></script>
+<script src="articles/latest.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="discussion.js"></script>
 <script defer src="contact.js"></script>
@@ -572,6 +595,25 @@ f();
   if(calm){frame(4);return}
   const t0=performance.now();
   (function loop(n){if(vis&&!document.hidden)frame((n-t0)/1000);requestAnimationFrame(loop)})(t0);
+})();
+</script>
+<script>
+(function(){
+  const sec=document.getElementById('articles-sec');if(!sec)return;
+  let list=(typeof ARTICLES!=='undefined'&&ARTICLES)||((typeof SITE!=='undefined'&&SITE.articles)||[]);
+  list=list.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  const links=document.querySelectorAll('[data-art-link]');
+  if(!list.length){sec.hidden=true;links.forEach(l=>(l.closest('li')||l).hidden=true);return}
+  const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const fmt=d=>{const m=/^(\d{4})-(\d{2})/.exec(String(d));return m?M[+m[2]-1]+' '+m[1]:String(d||'')};
+  const top=list.slice(0,3),box=document.getElementById('acards');
+  box.style.setProperty('--n',top.length);
+  top.forEach(a=>{const c=document.createElement('a');c.className='acard';c.href=a.url;
+    [['ak',a.category||'Article'],['at',a.title],['as',a.summary||''],['am',[fmt(a.date),a.mins?a.mins+' min read':''].filter(Boolean).join('  |  ')]]
+      .forEach(([k,t])=>{const s=document.createElement('span');s.className=k;s.textContent=t;c.appendChild(s)});box.appendChild(c)});
+  const more=document.getElementById('amore');
+  if(typeof ARTICLES_INDEX!=='undefined')more.href=ARTICLES_INDEX;
+  more.textContent=(list.length>top.length?'View all '+list.length+' articles':'View all articles')+' \u25B8';
 })();
 </script>
 </body>
